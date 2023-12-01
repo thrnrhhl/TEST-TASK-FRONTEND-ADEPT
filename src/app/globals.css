@@ -3,11 +3,13 @@
 @tailwind utilities;
 
 
+html, body, #root {
+    @apply h-full;
+}
 
 body {
     @apply bg-[#f5f5f5];
 }
-
 
 .input {
     @apply border text-xs px-[10px] py-[8px] w-full placeholder:text-xs focus:outline-none;
@@ -29,7 +31,6 @@ body {
     @apply bg-[#f00] text-[#fff];
 }
 
-
 .table {
     @apply border
 }
@@ -44,11 +45,4 @@ body {
 
 .form__field {
     @apply grid grid-cols-12 items-center
-}
-
-
-
-
-html, body, #root {
-    @apply h-full;
 }
