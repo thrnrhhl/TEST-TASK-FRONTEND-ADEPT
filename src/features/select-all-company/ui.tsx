@@ -12,7 +12,7 @@ export const SelectAllCompany = memo(() => {
     return (
         <label>
             <input type="checkbox" onChange={handleChange} />
-            Выбрать все
+            &nbsp;Выделить всё
         </label>
     );
 });

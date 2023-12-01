@@ -1,11 +1,10 @@
  import { mockCompanies } from "@/src/shared/config/constants/index";
 import { Company } from "@/src/shared/config/model";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IInitialState, initialStateActiveCompany, IUpdateField } from "./model";
+import { IInitialState, initialStateActiveCompany, IUpdateField, TypeChecked } from "./model";
 
 const initialState: IInitialState = {
     list: [],
-    companyId: null,
     activeCompany: initialStateActiveCompany
 };
 
@@ -25,24 +24,26 @@ const companySlice = createSlice({
         },
 
         // Тугл выбора компаний
-        toggleSelectAllCompanies: (state, action: PayloadAction<{checked: boolean}>) => {
+        toggleSelectAllCompanies: (state, action: PayloadAction<TypeChecked>) => {
             const { checked } = action.payload;
             state.list = state.list.map((key) => ({ ...key, selected: checked }));
         },
 
         // Отменить выделение
-        toggleSelectCompany: (state, action: PayloadAction<Pick<Company, 'id'> & { checked: boolean; }>) => {
+        toggleSelectCompany: (state, action: PayloadAction<Pick<Company, 'id'> & TypeChecked>) => {
             const { id, checked } = action.payload;
             state.list = state.list.map((key) => {
                 if(key.id === id) {                        
                     key.selected = checked;
-                    state.activeCompany = key;
+
+                    // Если чекбокс выбран, то заменяем компанию на новую
+                    if(checked) state.activeCompany = key;
+                    
+                    // Если чекбокс не выбран и id равен id компании то мы закрываем вкладку с компанией
                     if(id === state.activeCompany.id && !checked) state.activeCompany = initialStateActiveCompany;
                 }
                 return key;
             });
-
-            state.companyId = null;
         },
 
         // Добавление компаний

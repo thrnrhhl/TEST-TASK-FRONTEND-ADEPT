@@ -8,7 +8,6 @@ interface RowTableEmployeeProps extends EmployeeRowTable { };
 
 export const RowTableEmployee: FC<RowTableEmployeeProps> = memo(({ id, surname, name, position, companyId, selected }) => {
     const dispatch = useDispatch();
-
     const classes = classNames('border', {
         ['bg-[green]']: selected
     })
@@ -34,16 +33,34 @@ export const RowTableEmployee: FC<RowTableEmployeeProps> = memo(({ id, surname, 
     return (
         <tr className={classes}>
             <td>
-                <input type="checkbox" checked={!!selected} onChange={handleChangeCheckbox} />
+                <input
+                    type="checkbox"
+                    checked={!!selected}
+                    onChange={handleChangeCheckbox} />
             </td>
             <td>
-                <input type="text" className="input" name="surname" value={surname} onChange={handleChangeValue} />
+                <input
+                    type="text"
+                    className="input"
+                    name="surname"
+                    value={surname}
+                    onChange={handleChangeValue} />
             </td>
             <td>
-                <input type="text" className="input" name="name" value={name} onChange={handleChangeValue} />
+                <input
+                    type="text"
+                    className="input"
+                    name="name"
+                    value={name}
+                    onChange={handleChangeValue} />
             </td>
             <td>
-                <input type="text" className="input" name="position" value={position} onChange={handleChangeValue} />
+                <input
+                    type="text"
+                    className="input"
+                    name="position"
+                    value={position}
+                    onChange={handleChangeValue} />
             </td>
         </tr>
     );

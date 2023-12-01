@@ -15,7 +15,7 @@ export const SelectAllEmployees: FC<SelectAllEmployeesProps> = ({ companyId }) =
     return (
         <label>
             <input type="checkbox" onChange={handleChange} />
-            Выбрать все
+            &nbsp;Выделить всё
         </label>
     );
 };

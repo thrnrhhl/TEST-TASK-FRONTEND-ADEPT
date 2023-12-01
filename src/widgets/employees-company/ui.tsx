@@ -4,17 +4,20 @@ import { FormAddEmployee } from "@/src/features/form-add-employee";
 import { LoadedScroll } from "@/src/features/loaded-scroll";
 import { RowTableEmployee } from "@/src/features/row-table-employee";
 import { SelectAllEmployees } from "@/src/features/select-all-employees";
+import { EMPLOYEE_HEAD_TABLE } from "@/src/shared/config/constants";
 import { useAppSelector } from "@/src/shared/config/hooks";
 import { useEffect, useMemo, useState } from "react";
 
 export const EmployeesCompany = () => {
     const companyState = useAppSelector((state) => state.company);
     const employeeState = useAppSelector((state) => state.employees.list[companyState.activeCompany.id as number] || []);
+
+    // Счетчик для порционного скролла
     const [currentIndex, setCurrentIndex] = useState<number>(0);
 
     const employees = useMemo(() => {
         return employeeState.slice(0, 30 * (currentIndex + 1));
-    }, [currentIndex, companyState.companyId, employeeState])
+    }, [currentIndex, companyState.activeCompany.id, employeeState])
 
     // При скролле добавляем записи в наш стейт
     const handleScrollEnd = () => {
@@ -44,10 +47,7 @@ export const EmployeesCompany = () => {
                     <table className="border table w-full">
                         <thead>
                             <tr>
-                                <th></th>
-                                <th>Фамилия</th>
-                                <th>Имя</th>
-                                <th>Должность</th>
+                                {EMPLOYEE_HEAD_TABLE.map(key => <th key={key}>{key}</th>)}
                             </tr>
                         </thead>
                         <tbody>

@@ -3,7 +3,7 @@ import { DeleteCompany } from '@/src/features/delete-company';
 import { FormAddCompany } from '@/src/features/form-add-company';
 import { LoadedScroll } from '@/src/features/loaded-scroll';
 import { SelectAllCompany } from '@/src/features/select-all-company';
-import { TableRowCompany } from '@/src/features/table-row-company/ui';
+import { RowTableCompany } from '@/src/features/row-table-company';
 import { COMPANY_HEAD_TABLE } from '@/src/shared/config/constants';
 import { useAppSelector } from '@/src/shared/config/hooks';
 import classNames from 'classnames';
@@ -47,7 +47,7 @@ export const Companies = () => {
                         </thead>
                         <tbody>
                             {companyState.list.map((key) =>
-                                <TableRowCompany key={key.id} {...key} quantityEmployees={employeeState[key.id].length} />
+                                <RowTableCompany key={key.id} {...key} quantityEmployees={employeeState[key.id].length} />
                             )}
                         </tbody>
                     </table>

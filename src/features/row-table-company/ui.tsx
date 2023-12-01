@@ -4,16 +4,16 @@ import classNames from "classnames";
 import { ChangeEvent, FC, memo } from "react";
 import { useDispatch } from "react-redux";
 
-interface TableRowCompanyProps extends Company {
+interface RowTableCompanyProps extends Company {
     selected?: boolean;
     quantityEmployees: number;
 };
 
-export const TableRowCompany: FC<TableRowCompanyProps> = memo(({ id, name, address, selected, quantityEmployees }) => {
+export const RowTableCompany: FC<RowTableCompanyProps> = memo(({ id, name, address, selected, quantityEmployees }) => {
     const dispatch = useDispatch();
     const classes = classNames('border', {
         ['bg-[green]']: selected
-    })
+    });
 
     // Изменение значения в полях строки
     const handleChangeValue = (ev: ChangeEvent<HTMLInputElement>) => {
@@ -43,13 +43,21 @@ export const TableRowCompany: FC<TableRowCompanyProps> = memo(({ id, name, addre
                 />
             </td>
             <td className="border text-xs">
-                <input type="text" className="input" value={name} name="name" onChange={handleChangeValue} />
+                <input
+                    type="text"
+                    className="input"
+                    value={name}
+                    name="name"
+                    onChange={handleChangeValue} />
             </td>
-            <td>
-                {quantityEmployees}
-            </td>
+            <td>{quantityEmployees}</td>
             <td className="border text-xs">
-                <input type="text" className="input" value={address} name="address" onChange={handleChangeValue} />
+                <input
+                    type="text"
+                    className="input"
+                    value={address}
+                    name="address"
+                    onChange={handleChangeValue} />
             </td>
         </tr>
     );

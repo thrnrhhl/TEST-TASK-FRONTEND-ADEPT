@@ -1,0 +1,1 @@
+export const EMPLOYEE_HEAD_TABLE = ['#', 'Фамилия', 'Имя', 'Должность'];
