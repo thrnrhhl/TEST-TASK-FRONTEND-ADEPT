@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+body {
+    @apply bg-[#f5f5f5];
+}
+
+
+.input {
+    @apply border text-xs px-[10px] py-[8px] w-full placeholder:text-xs focus:outline-none;
+}
+
+.button {
+    @apply text-sm text-[#fff] p-[10px_10px];
+}
+
+.button--primary {
+    @apply bg-[#06d];
+}
+
+.button--secondary {
+    @apply bg-[#e5e5e5] text-[#000];
+}
+
+.button--danger {
+    @apply bg-[#f00] text-[#fff];
+}
+
+
+.table {
+    @apply border
+}
+
+.table td {
+    @apply border p-[5px] text-xs;
+}
+
+.table th {
+    @apply text-left border text-sm p-[5px];
+}
+
+.form__field {
+    @apply grid grid-cols-12 items-center
+}
+
+
+
+
+html, body, #root {
+    @apply h-full;
+}
